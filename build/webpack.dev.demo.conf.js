@@ -18,33 +18,33 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     app: './examples/main.js'
   },
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: utils.styleLoaders({ sourceMap: config.demo.cssSourceMap, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
-  devtool: config.dev.devtool,
+  devtool: config.demo.devtool,
 
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
-        { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
+        { from: /.*/, to: path.posix.join(config.demo.assetsPublicPath, 'index.html') },
       ],
     },
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
+    host: HOST || config.demo.host,
+    port: PORT || config.demo.port,
+    open: config.demo.autoOpenBrowser,
+    overlay: config.demo.errorOverlay
       ? { warnings: false, errors: true }
       : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    publicPath: config.demo.assetsPublicPath,
+    proxy: config.demo.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll,
+      poll: config.demo.poll,
     }
   },
   plugins: [
@@ -64,7 +64,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
-        to: config.dev.assetsSubDirectory,
+        to: config.demo.assetsSubDirectory,
         ignore: ['.*']
       }
     ])
@@ -72,7 +72,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 })
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port
+  portfinder.basePort = process.env.PORT || config.demo.port
   portfinder.getPort((err, port) => {
     if (err) {
       reject(err)
@@ -88,7 +88,7 @@ module.exports = new Promise((resolve, reject) => {
           // messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
           messages: [`Your application is running here: http://localhost:${port}`],
         },
-        onErrors: config.dev.notifyOnErrors
+        onErrors: config.demo.notifyOnErrors
         ? utils.createNotifierCallback()
         : undefined
       }))

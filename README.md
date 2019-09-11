@@ -3,6 +3,10 @@
 > demo doc
 组件帮助文档，模仿Element文档实现
 
+## 演示网站
+
+[http://doc.hcd233.cn](http://doc.hcd233.cn)
+
 ## 安装
 
 ``` bash
@@ -30,4 +34,7 @@ npm run build:demo
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+## 快速开始
+
 [快速开始](./examples/docs/quikeStart.md)

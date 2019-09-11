@@ -25,6 +25,14 @@ Vue.use(MyComponents)
 Vue.use(Element)
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  if (to.path === '/') {
+    next({ path: '/about' })
+  } else {
+    next()
+  }
+})
+
 new Vue({
   el: '#app',
   router,

@@ -105,7 +105,7 @@ export default {
 
 ```
 
-编写好md文件之后，需要在路由配置helloWorld路径指向该帮助文档即可
+编写好md文件之后，需要在路由/examples/router/index.js配置helloWorld路径指向该帮助文档即可
 
 ```
   {
